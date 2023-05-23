@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,8 +10,9 @@
 <body>
     <h1>Album List</h1>
     {% for album in albums %}
-    <h2 class="album">{{album}}</h2>
+    <h2 class="album"><a href="{% url 'album_detail' album.pk %}">{{album}}</a></h2>
     {% endfor %}
-    <!-- loop thorught the album and on h2 pull out 1 of the albums -->
+    <h3></h3>
+    <!-- loop throughout the album and on h2 pull out 1 of the albums -->
 </body>
 </html>

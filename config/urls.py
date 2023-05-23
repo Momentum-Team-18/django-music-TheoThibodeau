@@ -21,5 +21,6 @@ from albums import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.album_list, name='home'),
-    path('albums/<int:pk>', views.album_detail, name='album-detail'),
+    path('albums/<int:pk>', views.album_detail, name='album_detail'),
+    path('albums/new', views.create_album, name='new_album')
 ]

@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import AlbumForm
 from .models import Album
 
 def album_list(request):
@@ -7,4 +8,16 @@ def album_list(request):
 
 def album_detail(request, pk):
     album = get_object_or_404(Album, pk=pk)
-    return render(request, 'album_detail.html', {'album': album})
+    return render(request, 'music_app/album_detail.html', {'album': album})
+
+def create_album(request):
+    # create new album
+    if request.method == 'GET':
+        form = AlbumForm()
+        # if the user visits the page, render a blank form
+    else:
+        # django forms only handle GET and POST, so submitting the form will be a POST request
+        form = AlbumForm(request.POST)
+        form.save()
+        # Saves an instance of a new album in the database
+    return render(request, 'music_app/new_album.html', {'form': form})
