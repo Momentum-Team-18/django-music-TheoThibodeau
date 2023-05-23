@@ -12,7 +12,7 @@
     {% for album in albums %}
     <h2 class="album"><a href="{% url 'album_detail' album.pk %}">{{album}}</a></h2>
     {% endfor %}
-    <h3></h3>
     <!-- loop throughout the album and on h2 pull out 1 of the albums -->
+    <a href="{% url 'new_album' %}">Add A New Album</a>
 </body>
 </html>

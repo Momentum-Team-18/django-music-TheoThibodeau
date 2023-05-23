@@ -11,5 +11,6 @@
     <p>Title: {{album}}</p>
     <p>Artist: {{album.artist}}</p>
     <p>Song List: {{album.song_list}}</p>
+    <a href="{% url 'delete-album' album.pk %}">Delete</a>
 </body>
 </html>
