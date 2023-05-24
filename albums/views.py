@@ -23,9 +23,10 @@ def edit_album(request, pk):
         # passing the instance argument puts the existing
         # data in the form
     else:
-        form = AlbumForm(request.POST)
-        form.save()
-        return redirect('home')
+        form = AlbumForm(request.POST, instance=album)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
     return render(request, 'music_app/edit_album.html', {'form': form})
 
 def create_album(request):
@@ -38,5 +39,5 @@ def create_album(request):
         form = AlbumForm(request.POST)
         form.save()
         # Saves an instance of a new album in the database
-        return redirect('album_detail', pk=pk)
+        return redirect('home')
     return render(request, 'music_app/new_album.html', {'form': form})
