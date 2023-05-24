@@ -15,6 +15,19 @@ def delete_album(request, pk):
     album.delete()
     return redirect('home')
 
+def edit_album(request, pk):
+    album = get_object_or_404(Album, pk=pk)
+    
+    if request.method == 'GET':
+        form = AlbumForm(instance=album)
+        # passing the instance argument puts the existing
+        # data in the form
+    else:
+        form = AlbumForm(request.POST)
+        form.save()
+        return redirect('home')
+    return render(request, 'music_app/edit_album.html', {'form': form})
+
 def create_album(request):
     # create new album
     if request.method == 'GET':
@@ -25,5 +38,5 @@ def create_album(request):
         form = AlbumForm(request.POST)
         form.save()
         # Saves an instance of a new album in the database
-        return redirect('home')
+        return redirect('album_detail', pk=pk)
     return render(request, 'music_app/new_album.html', {'form': form})
