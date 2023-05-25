@@ -41,3 +41,13 @@ def create_album(request):
         # Saves an instance of a new album in the database
         return redirect('home')
     return render(request, 'music_app/new_album.html', {'form': form})
+
+def albums_by_pub(request, publisher_pk):
+    publisher = get_object_or_404(Publisher, pk=Publisher)
+    album = Album.objects.filter(publisher_id=publisher_pk)
+    context = {
+        'publisher': publisher,
+        'albums': album,
+
+    }
+    return render(request, 'albums/albums_by_pub.html', context)

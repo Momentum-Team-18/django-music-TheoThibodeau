@@ -9,7 +9,7 @@
     <title>Album List</title>
 </head>
 <body>
-    <h1>Album List</h1>
+    <h1 class="title">Album List</h1>
     {% for album in albums %}
     <h2 class="album"><a href="{% url 'album_detail' album.pk %}">{{album}}</a></h2>
     {% endfor %}

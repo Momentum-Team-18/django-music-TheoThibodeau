@@ -24,6 +24,7 @@ class Publisher(models.Model):
         
 class Listener(models.Model):
     name = models.CharField(max_length=200)
+    team = models.ForeignKey(to='Team', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -31,4 +32,9 @@ class Listener(models.Model):
 class Favorite(models.Model):
     listener = models.ForeignKey(to='Listener', on_delete=models.CASCADE)
     album = models.ForeignKey(to='Album', on_delete=models.CASCADE)
-    
+
+class Team(models.Model):
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
