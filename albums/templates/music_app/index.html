@@ -10,10 +10,21 @@
 </head>
 <body>
     <h1 class="title">Album List</h1>
+    <h3 class="newAlbumButton"><a href="{% url 'new_album' %}">Add A New Album</a></h3>
+
     {% for album in albums %}
-    <h2 class="album"><a href="{% url 'album_detail' album.pk %}">{{album}}</a></h2>
+    <h2 class="album">
+        <img class="image" src="{{ album.image.url  }}" alt="Album Image">
+        <div>Artist: {{album.artist}}</div>
+        <a href="{% url 'album_detail' album.pk %}">{{album}}</a>
+        <details class="details">
+            <summary>Song List</summary>
+            <p>{{ album.song_list }}</p>
+        </details>
+        <a href="{% url 'delete-album' album.pk %}">Delete</a>
+        <a href="{% url 'edit-album' album.pk %}">Edit</a>
+    </h2>
     {% endfor %}
     <!-- loop throughout the album and on h2 pull out 1 of the albums -->
-    <a href="{% url 'new_album' %}">Add A New Album</a>
 </body>
 </html>

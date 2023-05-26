@@ -13,6 +13,7 @@
     <p>Title: {{album}}</p>
     <p>Artist: {{album.artist}}</p>
     <p>Song List: {{album.song_list}}</p>
+    <p>Album Art:<br><img class="image" src="{{ album.image.url  }}" alt="Album Image"></p>
     <a href="{% url 'delete-album' album.pk %}">Delete</a>
     <a href="{% url 'edit-album' album.pk %}">Edit</a>
 </body>

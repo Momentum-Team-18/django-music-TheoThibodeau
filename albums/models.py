@@ -5,7 +5,8 @@ class Album(models.Model):
     album_title = models.CharField(max_length=200)
     song_list = models.TextField()
     published_date = models.CharField(max_length=200)
-    publisher = models.ForeignKey(to='Publisher', on_delete=models.CASCADE, blank=True, null=True)
+    label = models.ForeignKey(to='Label', on_delete=models.CASCADE, blank=True, null=True)
+    image = models.ImageField(upload_to='media/images/')
 
     def publish(self):
         self.save()
@@ -13,11 +14,11 @@ class Album(models.Model):
     def __str__(self):
         return self.album_title
     
-class Publisher(models.Model):
+class Label(models.Model):
     name = models.CharField(max_length=200)
 
     class Meta:
-        verbose_name_plural = 'companies'
+        verbose_name_plural = 'labels'
 
         def __str__(self):
             return self.name
@@ -38,3 +39,11 @@ class Team(models.Model):
 
     def __str__(self):
         return self.name
+
+class Cover(models.Model):
+    # title = models.CharField(max_length=200)
+    # description = models.TextField()
+    image = models.ImageField(upload_to='images/')
+
+    def __str__(self):
+        return self.title

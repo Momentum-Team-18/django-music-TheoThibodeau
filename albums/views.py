@@ -15,6 +15,10 @@ def delete_album(request, pk):
     album.delete()
     return redirect('home')
 
+def cover(request, pk):
+    albums = Album.objects.all()
+    return render(request, 'music_app/album_detail.html', {'albums': albums})
+
 def edit_album(request, pk):
     album = get_object_or_404(Album, pk=pk)
     
@@ -42,12 +46,11 @@ def create_album(request):
         return redirect('home')
     return render(request, 'music_app/new_album.html', {'form': form})
 
-def albums_by_pub(request, publisher_pk):
-    publisher = get_object_or_404(Publisher, pk=Publisher)
-    album = Album.objects.filter(publisher_id=publisher_pk)
+def albums_by_label(request, label_pk):
+    label = get_object_or_404(Label, pk=Label)
+    album = Album.objects.filter(label_id=label_pk)
     context = {
-        'publisher': publisher,
+        'label': label,
         'albums': album,
-
     }
     return render(request, 'albums/albums_by_pub.html', context)
