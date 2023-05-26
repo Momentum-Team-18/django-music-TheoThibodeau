@@ -15,10 +15,6 @@ def delete_album(request, pk):
     album.delete()
     return redirect('home')
 
-def cover(request, pk):
-    albums = Album.objects.all()
-    return render(request, 'music_app/album_detail.html', {'albums': albums})
-
 def edit_album(request, pk):
     album = get_object_or_404(Album, pk=pk)
     
@@ -40,10 +36,11 @@ def create_album(request):
         # if the user visits the page, render a blank form
     else:
         # django forms only handle GET and POST, so submitting the form will be a POST request
-        form = AlbumForm(request.POST)
-        form.save()
-        # Saves an instance of a new album in the database
-        return redirect('home')
+        form = AlbumForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # Saves an instance of a new album in the database
+            return redirect('home')
     return render(request, 'music_app/new_album.html', {'form': form})
 
 def albums_by_label(request, label_pk):
