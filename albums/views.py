@@ -1,10 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import AlbumForm
 from .models import Album
+from .models import Artist
 
 def album_list(request):
     albums = Album.objects.all()
     return render(request, 'music_app/index.html', {'albums': albums})
+
+def artist_list(request, pk):
+    artists = Artist.objects.all()
+    return render(request, 'music_app/index.html', {'artists': artists})
 
 def album_detail(request, pk):
     album = get_object_or_404(Album, pk=pk)

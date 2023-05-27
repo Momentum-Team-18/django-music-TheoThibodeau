@@ -14,8 +14,7 @@
 
     {% for album in albums %}
     <h2 class="album">
-        <img class="image" src="{{ album.image.url  }}" alt="Album Image">
-        <div>Artist: {{album.artist}}</div>
+        <img class="image" src="{{  album.image.url  }}" alt="Album Image">
         <a href="{% url 'album_detail' album.pk %}">{{album}}</a>
         <details class="details">
             <summary>Song List</summary>

@@ -1,8 +1,5 @@
-html{
-    width: 1000px;
-}
 body {
-    background-color: lightblue;
+    background-color: whitesmoke;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
     cursor: pointer;
@@ -54,6 +51,8 @@ a:visited {
     height: 300px;
 }
 
-.details {
-
+.newAlbumForm {
+    position: relative;
+    top: 150px;
+    right: 300px;
 }

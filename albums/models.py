@@ -14,6 +14,15 @@ class Album(models.Model):
     def __str__(self):
         return self.album_title
     
+class Artist(models.Model):
+    artist = models.CharField(max_length=200)
+
+    def publish(self):
+        self.save()
+    
+    def __str__(self):
+        return self.artist
+    
 class Label(models.Model):
     name = models.CharField(max_length=200)
 
