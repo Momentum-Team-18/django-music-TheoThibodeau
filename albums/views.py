@@ -8,7 +8,7 @@ def album_list(request):
     albums = Album.objects.all()
     return render(request, 'music_app/index.html', {'albums': albums})
 
-def artist_list(request, pk):
+def artist_list(request):
     artists = Artist.objects.all()
     return render(request, 'music_app/artist_list.html', {'artists': artists})
 

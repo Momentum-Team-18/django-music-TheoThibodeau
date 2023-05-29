@@ -9,15 +9,16 @@
     <title>Album List</title>
 </head>
 <body>
-    <h1 class="title">Album List</h1>
-    <h3 class="newAlbumButton"><a href="{% url 'new_album' %}">Add A New Album</a></h3>
-    <h3 class="NewArtistButton"><a href="{% url 'new-artist' %}">Add New Artist</a></h1>
+    <h1 class="title">Albums</h1>
+    <h5 class="newAlbumButton"><a href="{% url 'new_album' %}">New Album</a></h5>
+    <h5 class="newArtistButton"><a href="{% url 'new-artist' %}">New Artist</a></h5>
+    <h5 class="artistList"><a href="{% url 'artist-list' %}">Artist List</a></h5>
     {% for album in albums %}
     <h2 class="album">
         <img class="image" src="{{  album.image.url  }}" alt="Album Image">
         Artist: <a href="{% url 'deets' album.pk %}">{{album.artist}}</a>
         <br>
-        <a href="{% url 'album_detail' album.pk %}">{{album}}</a>
+        Album: <a href="{% url 'album_detail' album.pk %}">{{album}}</a>
         <details class="details">
             <summary>Song List</summary>
             <p>{{ album.song_list }}</p>

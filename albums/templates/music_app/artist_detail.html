@@ -11,8 +11,8 @@
 <body>
     <h2>{{artist.artist}} Profile</h2>
     <p>Artist Profile:<br><img class="artistImage" src="{{ artist.image.url }}" alt="Album Image"></p>
-    <p>Title: {{artist.album_list}}</p>
-    <p>Artist: {{artist.artist}}</p>
+    <p>Albums: {{artist.album_list}}</p>
+    <h5 class="newAlbumButton"><a href="{% url 'new_album' %}">Add New Album</a></h5>
 </body>
 </body>
 </html>

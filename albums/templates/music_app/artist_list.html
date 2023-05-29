@@ -10,7 +10,7 @@
 <body>
     <h1>Artist List</h1>
     {% for artist in artists %}
-        <h3>Artist: {{artist.artist}}</h3>
+        <h3>Artist: <a href=""{{artist.artist}}</h3>
         <h4>Albums: {{artist.album_list}}</h4>
     {% endfor %}
     <h1><a href="{% url 'new-artist' %}">Add New Artist</a></h1>
