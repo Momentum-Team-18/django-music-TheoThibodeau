@@ -16,6 +16,8 @@ class Album(models.Model):
     
 class Artist(models.Model):
     artist = models.CharField(max_length=200)
+    album_list = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='media/images/')
 
     def publish(self):
         self.save()
