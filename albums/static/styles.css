@@ -35,12 +35,12 @@ body {
     box-sizing: border-box;
     transition: all 0.3s ease;
     z-index: -1;
-  }
+}
 
-  .album:hover::after {
+.album:hover::after {
     width: 100%;
     height: 165%;
-  }
+}
 
 a:visited {
     color: blue;
