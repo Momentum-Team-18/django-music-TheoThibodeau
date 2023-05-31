@@ -10,4 +10,4 @@ class AlbumForm(forms.ModelForm):
 class ArtistForm(forms.ModelForm):
     class Meta:
         model = Artist
-        fields = ('artist', 'album_list')
+        fields = ('name', 'album_list')
