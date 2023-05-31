@@ -1,7 +1,7 @@
 from django.db import models
 
 class Album(models.Model):
-    artist = models.CharField(max_length=200)
+    artist = models.ForeignKey(to='Artist', on_delete=models.CASCADE, blank=True, null=True)
     album_title = models.CharField(max_length=200)
     song_list = models.TextField()
     published_date = models.CharField(max_length=200)
@@ -23,7 +23,7 @@ class Artist(models.Model):
         self.save()
     
     def __str__(self):
-        return self.artist
+        return self.name
     
 class Label(models.Model):
     name = models.CharField(max_length=200)

@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="artistDetails.css">
 </head>
 <body>
-    <h2>{{artist.artist}} Profile</h2>
+    <h2>{{artist.name}} Profile</h2>
     <p>Artist Profile:<br><img class="artistImage" src="{{ name.image.url }}" alt="Album Image"></p>
-    <p>Albums: {{artist.album_list}}</p>
+    <p>Albums: <a href="% url  %"></a>{{artist.album_list}}</p>
     <h5 class="newAlbumButton"><a href="{% url 'new_album' %}">Add New Album</a></h5>
 </body>
 </body>
