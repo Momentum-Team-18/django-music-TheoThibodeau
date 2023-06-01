@@ -1,7 +1,7 @@
 from django.db import models
 
 class Album(models.Model):
-    artist = models.ForeignKey(to='Artist', on_delete=models.CASCADE, blank=True, null=True)
+    artist = models.ForeignKey(to='Artist', on_delete=models.CASCADE, blank=True,)
     album_title = models.CharField(max_length=200)
     song_list = models.TextField()
     published_date = models.CharField(max_length=200)
@@ -18,7 +18,7 @@ class Artist(models.Model):
     name = models.CharField(max_length=200)
     album_list = models.CharField(max_length=200)
     image = models.ImageField(upload_to='media/images/')
-
+# maybe do a favorite selection here so you can select
     def publish(self):
         self.save()
     
@@ -74,9 +74,9 @@ class Cover(models.Model):
 #     birth_date = models.DateField(null=True, blank=True)
 #     type = models.CharField(max_length=50, choices=USER_TYPE_CHOICES, default=STUDENT)
 
-    # then you migrate
-    # then you need to say form.models import user in the admin! and complete
-    # other admin requirements
+#     # then you migrate
+#     # then you need to say form.models import user in the admin! and complete
+#     # other admin requirements
 
 # class Course(models.Model):
 #     MONDAY = 'M'
@@ -94,7 +94,8 @@ class Cover(models.Model):
 #     day = models.CharField(max_length=50, choices=DAY_CHOICES)
 #     start_time = models.TimeField()
 #     length_in_hours = models.FloatField(default=1.00)
-#     teacher = models.ForeignKey(to=User, on_delete=models.CASCADE)
+#     teacher = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='courses_teaching')
+#     students = models.ManyToManyField(to=User, related_name='courses')
 
 #     # foriegn key added, now migrate
 #     # non-nullable field: select an option: 1
@@ -104,4 +105,4 @@ class Cover(models.Model):
 #     def __str__(self):
 #         return self.title
 
-#     # migrate and add to admin
+    # migrate and add to admin
